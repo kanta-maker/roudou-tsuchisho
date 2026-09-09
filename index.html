@@ -1043,7 +1043,7 @@
       }
     }
     check('empName', '氏名（手順1）');
-    if (!skipAddress) check('empAddress', '現住所（手順1）');
+    if (!skipAddress) if (!skipAddress) check('empAddress', '現住所（手順1）');
 
     if (!getWorkplaceAddress()){
       var sel = $('workplaceSelect');
