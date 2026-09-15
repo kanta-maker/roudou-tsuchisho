@@ -855,7 +855,7 @@
   <!-- ===================== STEP 3: preview ===================== -->
   <section class="panel" id="panel-3">
     <div class="doc-toolbar no-print">
-      <button type="button" class="btn btn-primary" onclick="window.print()">🖨 印刷 / PDFで保存</button>
+      <button type="button" class="btn btn-primary" onclick="printDoc()">🖨 印刷 / PDFで保存</button>
       <button type="button" class="btn btn-ghost" onclick="goStep(2)">← 内容を修正する</button>
       <label class="chk"><input type="checkbox" id="includeMemo" checked onchange="renderPreview()"> 従業員基本情報（社内控え）も印刷する</label>
       <button type="button" class="btn btn-ghost" id="backToBulkBtn" onclick="switchMode('bulk')" hidden>📥 一括インポート一覧に戻る</button>
@@ -1556,7 +1556,7 @@
   }
 
   // ---------- preview rendering ----------
-  function renderPreview(){
+  /* print: keep tool name out of OS print header/footer */ var ORIGINAL_DOC_TITLE = document.title; function printDoc(){ var name = val('empName'); document.title = name ? (name + '_労働条件通知書') : '労働条件通知書'; window.print(); } window.addEventListener('afterprint', function(){ document.title = ORIGINAL_DOC_TITLE; }); function renderPreview(){
     var contractTypeVal = radioVal('contractType');
     var fixedTermVal = radioVal('fixedTerm');
     var renewalVal = radioVal('renewal');
